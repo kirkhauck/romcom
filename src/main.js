@@ -5,6 +5,7 @@ var coverTitle = document.querySelector('.cover-title');
 var coverTagline1 = document.querySelector('.tagline-1');
 var coverTagline2 = document.querySelector('.tagline-2');
 
+var randomBookButton = document.querySelector('.random-cover-button')
 
 
 
@@ -21,12 +22,14 @@ var randomCoverTagline2 = descriptors[getRandomIndex(descriptors)];
 
 // Add your event listeners here 👇
 
-window.addEventListener('load', useRandomCoverImage());
-window.addEventListener('load', useRandomCoverTitle());
-window.addEventListener('load', useRandomCoverTagline1());
-window.addEventListener('load', useRandomCoverTagline2());
-// // When page loads (event listener?) trigger Cover class using random
-// // image, title, and tagline
+window.addEventListener('load', useRandomCoverImage);
+window.addEventListener('load', useRandomCoverTitle);
+window.addEventListener('load', useRandomCoverTagline1);
+window.addEventListener('load', useRandomCoverTagline2);
+
+randomBookButton.addEventListener('click', randomizeBook);
+
+// Functions
 
 function useRandomCoverImage() {
   coverImage.src = randomCoverImage;
@@ -42,6 +45,15 @@ function useRandomCoverTagline1() {
 
 function useRandomCoverTagline2() {
   coverTagline2.innerText = randomCoverTagline2;
+}
+
+function randomizeBook() {
+  randomCoverImage = covers[getRandomIndex(covers)];
+  randomCoverTitle = titles[getRandomIndex(titles)];
+  randomCoverTagline1 = descriptors[getRandomIndex(descriptors)];
+  randomCoverTagline2 = descriptors[getRandomIndex(descriptors)];
+  var randomBook = new Cover(randomCoverImage, randomCoverTitle, randomCoverTagline1, randomCoverTagline2);
+  console.log(randomBook)
 }
 
 // Create your event handlers and other functions here 👇
