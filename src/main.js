@@ -1,6 +1,6 @@
 // Create variables targetting the relevant DOM elements here 👇
 
-var coverImage = document.querySelector('.cover-image').src;
+var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var coverTagline1 = document.querySelector('.tagline-1');
 var coverTagline2 = document.querySelector('.tagline-2');
@@ -23,19 +23,26 @@ var randomCoverTagline2 = descriptors[getRandomIndex(descriptors)];
 
 window.addEventListener('load', useRandomCoverImage());
 window.addEventListener('load', useRandomCoverTitle());
-
+window.addEventListener('load', useRandomCoverTagline1());
+window.addEventListener('load', useRandomCoverTagline2());
 // // When page loads (event listener?) trigger Cover class using random
 // // image, title, and tagline
 
 function useRandomCoverImage() {
-  coverImage = randomCoverImage;
+  coverImage.src = randomCoverImage;
 }
 
 function useRandomCoverTitle() {
   coverTitle.innerText = randomCoverTitle;
 }
 
+function useRandomCoverTagline1() {
+  coverTagline1.innerText = randomCoverTagline1;
+}
 
+function useRandomCoverTagline2() {
+  coverTagline2.innerText = randomCoverTagline2;
+}
 
 // Create your event handlers and other functions here 👇
 
