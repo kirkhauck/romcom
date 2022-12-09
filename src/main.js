@@ -29,9 +29,11 @@ randomCoverButton.addEventListener('click', randomizeBook);
 makeNewButton.addEventListener('click', showFormView);
 viewSavedButton.addEventListener('click', showSavedView);
 homeButton.addEventListener('click', showHomeView);
-createNewBookButton.addEventListener('click', createUserBook);
+createNewBookButton.addEventListener('click', function(){
+  pushInput(event)
+});
 
-
+//FUNCTIONS
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -83,6 +85,9 @@ function createUserBook() {
 }
 
 function pushInput(event) {
-  titles.push(userTitle.value);
   event.preventDefault()
+  covers.push(userCover.value);
+  titles.push(userTitle.value);
+  descriptors.push(userDesc1.value);
+  descriptors.push(userDesc2.value);
 }
