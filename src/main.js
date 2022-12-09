@@ -1,11 +1,19 @@
 var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
 var savedView = document.querySelector('.saved-view');
+
 var homeButton = document.querySelector('.home-button');
 var makeNewButton = document.querySelector('.make-new-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
-var viewSavedButton = document.querySelector('.view-saved-button')
+var viewSavedButton = document.querySelector('.view-saved-button');
 var randomCoverButton = document.querySelector('.random-cover-button');
+var createNewBookButton = document.querySelector('.create-new-book-button');
+
+var userCover = document.querySelector('.user-cover');
+var userTitle = document.querySelector('.user-title');
+var userDesc1 = document.querySelector('.user-desc1');
+var userDesc2 = document.querySelector('.user-desc2');
+
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var tagline1 = document.querySelector('.tagline-1');
@@ -15,12 +23,17 @@ var savedCovers = [
 ];
 var currentCover;
 
+// EVENT LISTENERS
 window.addEventListener('load', randomizeBook);
 randomCoverButton.addEventListener('click', randomizeBook);
 makeNewButton.addEventListener('click', showFormView);
 viewSavedButton.addEventListener('click', showSavedView);
 homeButton.addEventListener('click', showHomeView);
+createNewBookButton.addEventListener('click', function(){
+  createUserBook(event)
+});
 
+//FUNCTIONS
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -63,4 +76,32 @@ function showHomeView() {
   randomCoverButton.classList.remove('hidden');
   saveCoverButton.classList.remove('hidden');
   homeButton.classList.add('hidden');
+}
+
+// function createUserBook() {
+//   // showHomeView();
+//   pushInput();
+//   // return false 
+// }
+
+function createUserBook(event) {
+  event.preventDefault()
+  covers.push(userCover.value);
+  titles.push(userTitle.value);
+  descriptors.push(userDesc1.value);
+  descriptors.push(userDesc2.value);
+
+  var userCoverImage = userCover.value;
+  var userCoverTitle = userTitle.value;
+  var userCoverTagline1 = userDesc1.value;
+  var userCoverTagline2 = userDesc2.value;
+  currentCover = new Cover(userCoverImage, userCoverTitle, userCoverTagline1, userCoverTagline2);
+
+  coverImage.src = currentCover.cover;
+  coverTitle.innerText = currentCover.title;
+  tagline1.innerText = currentCover.tagline1;
+  tagline2.innerText = currentCover.tagline2;
+
+  showHomeView();
+  
 }
