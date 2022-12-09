@@ -16,7 +16,7 @@ var currentCover;
 
 window.addEventListener('load', randomizeBook);
 randomCoverButton.addEventListener('click', randomizeBook);
-makeNewButton.addEventListener('click', showFormPage);
+makeNewButton.addEventListener('click', showFormView);
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -35,7 +35,7 @@ function randomizeBook() {
   tagline2.innerText = currentCover.tagline2;
 }
 
-function showFormPage() {
+function showFormView() {
   homeView.classList.add('hidden');
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
