@@ -1,9 +1,10 @@
 var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
-var savedCoversView = document.querySelector('.saved-view');
+var savedView = document.querySelector('.saved-view');
 var homeButton = document.querySelector('.home-button');
 var makeNewButton = document.querySelector('.make-new-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
+var viewSavedButton = document.querySelector('.view-saved-button')
 var randomCoverButton = document.querySelector('.random-cover-button');
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
@@ -17,6 +18,8 @@ var currentCover;
 window.addEventListener('load', randomizeBook);
 randomCoverButton.addEventListener('click', randomizeBook);
 makeNewButton.addEventListener('click', showFormView);
+viewSavedButton.addEventListener('click', showSavedView);
+homeButton.addEventListener('click', showHomeView);
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -37,8 +40,27 @@ function randomizeBook() {
 
 function showFormView() {
   homeView.classList.add('hidden');
+  savedView.classList.add('hidden');
+  formView.classList.remove('hidden');
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
-  formView.classList.remove('hidden');
   homeButton.classList.remove('hidden');
+}
+
+function showSavedView() {
+  homeView.classList.add('hidden');
+  savedView.classList.remove('hidden');
+  formView.classList.add('hidden');
+  randomCoverButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+}
+
+function showHomeView() {
+  homeView.classList.remove('hidden');
+  savedView.classList.add('hidden');
+  formView.classList.add('hidden');
+  randomCoverButton.classList.remove('hidden');
+  saveCoverButton.classList.remove('hidden');
+  homeButton.classList.add('hidden');
 }
