@@ -30,7 +30,7 @@ makeNewButton.addEventListener('click', showFormView);
 viewSavedButton.addEventListener('click', showSavedView);
 homeButton.addEventListener('click', showHomeView);
 createNewBookButton.addEventListener('click', function(){
-  pushInput(event)
+  createUserBook(event)
 });
 
 //FUNCTIONS
@@ -78,16 +78,30 @@ function showHomeView() {
   homeButton.classList.add('hidden');
 }
 
-function createUserBook() {
-  // showHomeView();
-  pushInput();
-  // return false 
-}
+// function createUserBook() {
+//   // showHomeView();
+//   pushInput();
+//   // return false 
+// }
 
-function pushInput(event) {
+function createUserBook(event) {
   event.preventDefault()
   covers.push(userCover.value);
   titles.push(userTitle.value);
   descriptors.push(userDesc1.value);
   descriptors.push(userDesc2.value);
+
+  var userCoverImage = userCover.value;
+  var userCoverTitle = userTitle.value;
+  var userCoverTagline1 = userDesc1.value;
+  var userCoverTagline2 = userDesc2.value;
+  currentCover = new Cover(userCoverImage, userCoverTitle, userCoverTagline1, userCoverTagline2);
+
+  coverImage.src = currentCover.cover;
+  coverTitle.innerText = currentCover.title;
+  tagline1.innerText = currentCover.tagline1;
+  tagline2.innerText = currentCover.tagline2;
+
+  showHomeView();
+  
 }
