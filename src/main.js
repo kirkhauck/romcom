@@ -1,11 +1,19 @@
 var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
 var savedView = document.querySelector('.saved-view');
+
 var homeButton = document.querySelector('.home-button');
 var makeNewButton = document.querySelector('.make-new-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
-var viewSavedButton = document.querySelector('.view-saved-button')
+var viewSavedButton = document.querySelector('.view-saved-button');
 var randomCoverButton = document.querySelector('.random-cover-button');
+var createNewBookButton = document.querySelector('.create-new-book-button');
+
+var userCover = document.querySelector('.user-cover');
+var userTitle = document.querySelector('.user-title');
+var userDesc1 = document.querySelector('.user-desc1');
+var userDesc2 = document.querySelector('.user-desc2');
+
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var tagline1 = document.querySelector('.tagline-1');
@@ -15,11 +23,14 @@ var savedCovers = [
 ];
 var currentCover;
 
+// EVENT LISTENERS
 window.addEventListener('load', randomizeBook);
 randomCoverButton.addEventListener('click', randomizeBook);
 makeNewButton.addEventListener('click', showFormView);
 viewSavedButton.addEventListener('click', showSavedView);
 homeButton.addEventListener('click', showHomeView);
+createNewBookButton.addEventListener('click', createUserBook);
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -63,4 +74,15 @@ function showHomeView() {
   randomCoverButton.classList.remove('hidden');
   saveCoverButton.classList.remove('hidden');
   homeButton.classList.add('hidden');
+}
+
+function createUserBook() {
+  // showHomeView();
+  pushInput();
+  // return false 
+}
+
+function pushInput(event) {
+  titles.push(userTitle.value);
+  event.preventDefault()
 }
