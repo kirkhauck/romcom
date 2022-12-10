@@ -26,6 +26,7 @@ var currentCover;
 // EVENT LISTENERS
 window.addEventListener('load', randomizeBook);
 randomCoverButton.addEventListener('click', randomizeBook);
+saveCoverButton.addEventListener('click', saveCover);
 makeNewButton.addEventListener('click', showFormView);
 viewSavedButton.addEventListener('click', showSavedView);
 homeButton.addEventListener('click', showHomeView);
@@ -50,6 +51,32 @@ function randomizeBook() {
   tagline1.innerText = currentCover.tagline1;
   tagline2.innerText = currentCover.tagline2;
 }
+
+function saveCover() {
+  var coverExists = false;
+
+  for (i = 0; i < savedCovers.length; i++) {
+    if (currentCover === savedCovers[i]) {
+      coverExists = true;
+    }
+  }
+  
+  if(coverExists === false) {
+    savedCovers.push(currentCover)
+  }
+}
+
+  // for (i = 0; i < savedCovers.length; i++) {
+  //   if (currentCover === savedCovers[i]) {
+  //     console.log(coverExists);
+  //     coverExists = true;
+  //   }
+  // }
+
+  // if (coverExists) {
+  //   savedCovers.push(currentCover);
+  // }
+
 
 function showFormView() {
   homeView.classList.add('hidden');
@@ -77,12 +104,6 @@ function showHomeView() {
   saveCoverButton.classList.remove('hidden');
   homeButton.classList.add('hidden');
 }
-
-// function createUserBook() {
-//   // showHomeView();
-//   pushInput();
-//   // return false 
-// }
 
 function createUserBook(event) {
   event.preventDefault()
