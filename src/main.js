@@ -1,6 +1,8 @@
 var homeView = document.querySelector('.home-view');
+var mainCover = document.querySelector('.main-cover')
 var formView = document.querySelector('.form-view');
 var savedView = document.querySelector('.saved-view');
+var savedCoverSection = document.querySelector('.saved-covers-section');
 
 var homeButton = document.querySelector('.home-button');
 var makeNewButton = document.querySelector('.make-new-button');
@@ -63,19 +65,18 @@ function saveCover() {
   
   if(coverExists === false) {
     savedCovers.push(currentCover)
+    var savedCover = document.createElement('div');
+    savedCover.innerHTML = 
+      `<section class="mini-cover">
+        <img class="cover-image" src="${coverImage.src}">
+        <h2 class="cover-title">${coverTitle.innerText}</h2>
+        <h3 class="tagline">A tale of <span class="tagline-1">${tagline1.innerText}</span> and <span class="tagline-2">${tagline2.innerText}</span></h3>
+        <img class="price-tag" src="./assets/price.png">
+        <img class="overlay" src="./assets/overlay.png">
+      </section>`
+    savedCoverSection.appendChild(savedCover);
   }
 }
-
-  // for (i = 0; i < savedCovers.length; i++) {
-  //   if (currentCover === savedCovers[i]) {
-  //     console.log(coverExists);
-  //     coverExists = true;
-  //   }
-  // }
-
-  // if (coverExists) {
-  //   savedCovers.push(currentCover);
-  // }
 
 
 function showFormView() {
@@ -94,6 +95,8 @@ function showSavedView() {
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
+
+
 }
 
 function showHomeView() {
@@ -124,5 +127,4 @@ function createUserBook(event) {
   tagline2.innerText = currentCover.tagline2;
 
   showHomeView();
-  
 }
