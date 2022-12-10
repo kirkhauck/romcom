@@ -1,6 +1,6 @@
 var homeView = document.querySelector('.home-view');
 var mainCover = document.querySelector('.main-cover');
-var miniCover = document.querySelectorAll('.cover-image');
+// var miniCover = document.querySelectorAll('.mini-cover');
 var formView = document.querySelector('.form-view');
 var savedView = document.querySelector('.saved-view');
 var savedCoverSection = document.querySelector('.saved-covers-section');
@@ -39,6 +39,16 @@ createNewBookButton.addEventListener('click', function(){
   createUserBook(event)
 });
 
+savedCoverSection.addEventListener('dblclick', function(){
+  deleteCover(event)
+})
+
+// document.addEventListener('DOMContentLoaded', function(){
+//   if(miniCover){
+//     miniCover.addEventListener('dblclick', deleteCover);
+//   }
+// })
+
 // miniCover.addEventListener('dblclick', deleteCover);
 
 
@@ -71,15 +81,18 @@ function saveCover() {
   
   if(coverExists === false) {
     savedCovers.push(currentCover)
-    var savedCover = document.createElement('section');
+    var savedCover = document.createElement('div');
+    var currentCoverId = currentCover.id
+    savedCover.setAttribute('id',currentCoverId)
+    savedCover.setAttribute('class','mini-cover')
     savedCover.innerHTML = 
-      `<section id="${currentCover.id}" class="mini-cover">
-        <img class="cover-image" src="${coverImage.src}">
+      // `<section id="${currentCover.id}" class="mini-cover">
+        `<img class="cover-image" src="${coverImage.src}">
         <h2 class="cover-title">${coverTitle.innerText}</h2>
         <h3 class="tagline">A tale of <span class="tagline-1">${tagline1.innerText}</span> and <span class="tagline-2">${tagline2.innerText}</span></h3>
         <img class="price-tag" src="./assets/price.png">
-        <img class="overlay" src="./assets/overlay.png">
-      </section>`
+        <img class="overlay" src="./assets/overlay.png">`
+      // {/* </section>` */}
     savedCoverSection.appendChild(savedCover);
   }
 }
@@ -92,6 +105,7 @@ function showFormView() {
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
+  
 }
 
 function showSavedView() {
@@ -101,7 +115,9 @@ function showSavedView() {
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
-
+  // if(miniCover){
+  //   miniCover.addEventListener('dblclick', deleteCover);
+  // }
 
 }
 
@@ -135,12 +151,15 @@ function createUserBook(event) {
   showHomeView();
 }
 
-function deleteCover() {
-  console.log("double click worked")
+function deleteCover(event) {
+  // console.log(event.target.parentElement)
+var miniCover = event.target.parentElement;
+miniCover.remove();
+
 }
 
-function createEventListener() {
-  if(miniCover){
-    miniCover.addEventListener('dblclick', deleteCover);
-  }
-}
+// function createEventListener() {
+//   if(miniCover){
+//     miniCover.addEventListener('dblclick', deleteCover);
+//   }
+// }
