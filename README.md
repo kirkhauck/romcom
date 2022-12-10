@@ -1,7 +1,7 @@
 # RomCom  
 
 ### Abstract:
-[//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
+
 This app creates a gallery to generate and store book covers consisting of a cover image, book title, and subtitle consisting of two taglines.
 
 The features include the following:
@@ -12,35 +12,33 @@ The features include the following:
 - Ability to delete a cover in the gallery by double clicking its image.
 
 ### Installation Instructions:
-[//]: <> (What steps does a person have to take to get your app cloned down and running?)
 The deployed project can be viewed [here](https://kirkhauck.github.io/romcom/).
 
 To clone a copy of the project to a remote repository, follow these steps:
 
 1. Go to the project [page on GitHub](https://github.com/kirkhauck/romcom).
 2. Fork the repository.
-3. Click the <>Code button and copy your preferred clone link.
+3. Click the "<> Code" button and copy your preferred clone link.
 4. Open your Terminal.
 5. Navigate to the directory you would like to clone the repository to.
-6. Enter the command `git clone cloneLink` replacing `cloneLink` with the link you copied in Step 3.
+6. Enter the command `git clone cloneLink` replacing `cloneLink` with the link you copied in Step 3
 7. Use command `code .` to open the project in your preferred text editor.
 
 ### Preview of App:
-[//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
-![App Preview](RomCom_Hauck_Cole.gif)
+
+![App Preview](https://media.giphy.com/media/2uQWut5hFTvITKVr68/giphy.gif)
 
 ### Context:
-[//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
+
 This project was completed in approximately 20 hours using the driver-navigator method of coding.
 
 Both contributors were in Module 1 of the front-end program at [Turing School of Software Development](https://turing.edu/?gclid=CjwKCAiA-dCcBhBQEiwAeWidtekpL5eXls3V1GFB7J1vblQtfGKfXEH5afAgzUsYH4TkqlkrmZvylhoCRKcQAvD_BwE).
 
 ### Contributors:
-[//]: <> (Who worked on this application? Link to their GitHubs.)
+
 [Christopher Cole](https://github.com/chrometaphor) and [Kirk Hauck](https://github.com/kirkhauck)
 
 ### Learning Goals:
-[//]: <> (What were the learning goals of this project? What tech did you work with?)
 - Write clean, DRY JavaScript
     - Use a provided class by creating object instances using the new keyword
     - Manipulate the page after it has loaded adding, removing, and updating elements on the DOM
@@ -51,9 +49,10 @@ Both contributors were in Module 1 of the front-end program at [Turing School of
     - Communicate, troubleshoot, and plan effectively as a team
 
 ### Wins + Challenges:
-[//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?)
 Challenge: Did not know how to utilize Class instantiation to display a new cover.
+
 Win: After reading the provided HTML and CSS files and referencing our code to generate a random cover, we knew we needed to somehow make a new HTML element and add the provided CSS class using JavaScript. After researching online and asking questions of fellow Turing cohort members, we arrived at a solution using `document.createElement()` and  `Element.classList.add()`.
 
 Challenge: Did not know how to utilize an event listern for an element that was not present upon page load.
+
 Win: After multiple failed attempts trying to use conditionals, we received direction from a fellow Turing student to research the `event` object. After researching, we were able to utilize event bubbling to successfuly create an event listener to trigger an anonymous function so we could utilize our `deleteCover(event)` function.
