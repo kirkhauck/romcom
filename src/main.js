@@ -1,5 +1,6 @@
 var homeView = document.querySelector('.home-view');
-var mainCover = document.querySelector('.main-cover')
+var mainCover = document.querySelector('.main-cover');
+var miniCover = document.querySelectorAll('.cover-image');
 var formView = document.querySelector('.form-view');
 var savedView = document.querySelector('.saved-view');
 var savedCoverSection = document.querySelector('.saved-covers-section');
@@ -10,6 +11,8 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var randomCoverButton = document.querySelector('.random-cover-button');
 var createNewBookButton = document.querySelector('.create-new-book-button');
+
+// var miniCover;
 
 var userCover = document.querySelector('.user-cover');
 var userTitle = document.querySelector('.user-title');
@@ -35,6 +38,9 @@ homeButton.addEventListener('click', showHomeView);
 createNewBookButton.addEventListener('click', function(){
   createUserBook(event)
 });
+
+// miniCover.addEventListener('dblclick', deleteCover);
+
 
 //FUNCTIONS
 function getRandomIndex(array) {
@@ -65,9 +71,9 @@ function saveCover() {
   
   if(coverExists === false) {
     savedCovers.push(currentCover)
-    var savedCover = document.createElement('div');
+    var savedCover = document.createElement('section');
     savedCover.innerHTML = 
-      `<section class="mini-cover">
+      `<section id="${currentCover.id}" class="mini-cover">
         <img class="cover-image" src="${coverImage.src}">
         <h2 class="cover-title">${coverTitle.innerText}</h2>
         <h3 class="tagline">A tale of <span class="tagline-1">${tagline1.innerText}</span> and <span class="tagline-2">${tagline2.innerText}</span></h3>
@@ -127,4 +133,14 @@ function createUserBook(event) {
   tagline2.innerText = currentCover.tagline2;
 
   showHomeView();
+}
+
+function deleteCover() {
+  console.log("double click worked")
+}
+
+function createEventListener() {
+  if(miniCover){
+    miniCover.addEventListener('dblclick', deleteCover);
+  }
 }
